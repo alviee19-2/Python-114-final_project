@@ -1,4 +1,4 @@
-###重要連結###
+###重要連結
 FinMind API: <https://api.finmindtrade.com/docs>
 FinMind 快速開始: <https://finmind.github.io/quickstart/>
 Markdown語法: <https://markdown.tw/#autolink>
