@@ -65,14 +65,14 @@ def take_data1(data_loader, input_date):
             logging.warning("⚠️ 無法取得" + method_name + str(e))
             print(f"⚠️ 無法取得 {method_name}：{e}")
 
-def take_data3(data_loader):
+def take_data3(data_loader, index_id ,start_date, end_date):
     now = dt.datetime.now()
     timestamp = now.strftime("%Y%m%d_%H%M")
 
-    for method_name in input0_data.func:
+    for method_name in input3_data.func_index:
         try:
             method = getattr(data_loader, method_name)
-            df = method()
+            df = method(index_id = index_id ,start_date = start_date, end_date = end_date)
             folder = f"db/{method_name}"
             filename = f"{method_name}_{timestamp}.csv"
             save_to_csv(df, folder, filename)
@@ -85,5 +85,5 @@ if __name__ == "__main__":
     logger()
     take_data0(data_loader)
     take_data1(data_loader, input_date = '2025-05-09')
-    #take_data3(data_loader, input_stock = '2330', input_date = '2005-01-01')
+    take_data3(data_loader, index_id = 'TAIEX', start_date = '2025-01-01', end_date = '2025-05-27',)
     
