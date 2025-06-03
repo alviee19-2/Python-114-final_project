@@ -1,12 +1,15 @@
 import os
 import pandas as pd
-import datetime as dt
+from datetime import date
+from datetime import timedelta
 from dotenv import load_dotenv
 from FinMind.data import DataLoader
 import logging
 import input0_data
 import input1_data
 import input3_data
+from compute import compute
+
 
 def logger():
     logging.basicConfig(
@@ -36,7 +39,7 @@ def save_to_csv(df: pd.DataFrame, folder: str, filename: str):
     print(f"✅ 已儲存檔案：{path}")
 
 def take_data0(data_loader):
-    now = dt.datetime.now()
+    now = date.today()
     timestamp = now.strftime("%Y%m%d")
 
     for method_name in input0_data.func:
@@ -66,8 +69,8 @@ def take_data1(data_loader, input_date):
             print(f"⚠️ 無法取得 {method_name}：{e}")
 
 def take_data3(data_loader, index_id ,start_date, end_date):
-    now = dt.datetime.now()
-    timestamp = now.strftime("%Y%m%d_%H%M")
+    now = date.today()
+    timestamp = now.strftime("%Y%m%d")
 
     for method_name in input3_data.func_index:
         try:
@@ -83,7 +86,10 @@ def take_data3(data_loader, index_id ,start_date, end_date):
 if __name__ == "__main__":
     data_loader = login()
     logger()
+    today = date.today()
+    past10_day = today - timedelta(days = 10)
     take_data0(data_loader)
     take_data1(data_loader, input_date = '2025-05-09')
-    take_data3(data_loader, index_id = 'TAIEX', start_date = '2025-01-01', end_date = '2025-05-27',)
+    take_data3(data_loader, index_id = 'TAIEX', start_date = past10_day, end_date = today)
+    compute()
     
