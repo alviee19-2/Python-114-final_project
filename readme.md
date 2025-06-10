@@ -1,3 +1,5 @@
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/alviee19-2/Python-114-final_project)
+
 ### 重要連結
 -**FinMind API**: <https://api.finmindtrade.com/docs>  
 -**FinMind 快速開始**: <https://finmind.github.io/quickstart/>  
