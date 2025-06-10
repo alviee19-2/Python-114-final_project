@@ -16,15 +16,19 @@ def compute():
 
     #compute
     index = df[:, 0]
+    sum5 = index[-1: -6: -1]
     last = index[-1]
-    avg = index.sum() / 5
+    avg = sum5.sum() / 5
     # print(index)
     # print(avg)
     # print(last)
 
     #checking
     if(last - avg > 0):
-        print("今日比五日大!")
+        print("今日比五日平均高!")
         print("今日: ", last, ' ', "五日平均: ", avg)
     else:
-        print("一般般")
+        print("今日比五日低!")
+        print("今日: ", last, ' ', "五日平均: ", avg)
+
+compute()

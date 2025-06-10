@@ -82,6 +82,8 @@ def take_data3(data_loader, index_id ,start_date, end_date):
         except Exception as e:
             logging.warning("⚠️ 無法取得" + method_name + str(e))
             print(f"⚠️ 無法取得 {method_name}：{e}")
+def get_true()
+    if()
 
 if __name__ == "__main__":
     data_loader = login()
